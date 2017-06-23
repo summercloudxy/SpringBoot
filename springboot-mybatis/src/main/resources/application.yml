@@ -1,0 +1,47 @@
+#服务器配置
+server:
+  port: 8080
+  context-path: /device
+
+
+
+# 数据库访问配置
+# 主数据源，默认的
+druid:
+    url: jdbc:mysql://localhost:3306/smartfactory
+    username: smartfactory
+    password: smartfactory123
+    initial-size: 5
+    min-idle: 2
+    max-active: 20
+    test-on-borrow: true
+    driver-class: com.mysql.jdbc.Driver
+
+mybatis:
+    type-aliases-package: tk.mybatis.springboot.model
+    mapper-locations: classpath:mapper/*.xml
+
+pagehelper:
+    helperDialect: mysql
+    reasonable: true
+    supportMethodsArguments: true
+    params: count=countSql
+
+websocket:
+  destination-url:
+    status: /signal/{deviceCode}/status/{signalCode}
+    parameter: /signal/{deviceCode}/parameter/{signalCode}
+    fault: /signal/{deviceCode}/fault/{signalCode}
+    signal: /signal/{deviceCode}/{signalCode}
+    device: /signal/{deviceCode}
+
+excel:
+  db:
+    path: "D:\\点表\\old\\OLD_ZGXG2016-15全厂PLC信息采集表20170619.xlsm"
+
+
+
+
+
+#logging:
+#  config: logback-boot.xml
